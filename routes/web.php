@@ -21,8 +21,15 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('admin/dashboard', [HomeController::class, 'index'])->middleware(['auth', 'admin']);
+    
     Route::get('admin/produtos', [ProductController::class, 'index'])->name('admin/produtos');
     Route::get('admin/produtos/crie', [ProductController::class, 'create'])->name('admin/produtos/crie');
+    Route::post('admin/produtos/salvar', [ProductController::class, 'salvar'])->name('admin/produtos/salvar');
+    Route::get('admin/produtos/editar/{id}', [ProductController::class, 'editar'])->name('admin/produtos/editar');
+
+    Route::put('admin/produtos/editar/{id}', [ProductController::class, 'update'])->name('admin/produtos/update');
+    Route::get('admin/produtos/deletar/{id}', [ProductController::class, 'delete'])->name('admin/produtos/deletar');
+    
 });
 
 require __DIR__.'/auth.php';

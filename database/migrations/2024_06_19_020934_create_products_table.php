@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('titulo');
             $table->string('categoria');
-            $table->integer('preco');
+            $table->float('preco');
             $table->timestamps();
         });
     }
